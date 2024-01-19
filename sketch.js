@@ -1,7 +1,9 @@
 
 var img;
 var chooseFile;
+var chooseColor;
 var blurred;
+var clr;
 
 
 function preload() {
@@ -10,6 +12,8 @@ function preload() {
     chooseFile.addEventListener("change", function () {
         getImgData();
       });
+
+    chooseColor = document.getElementById("choose-color");
 
 }
 
@@ -26,7 +30,6 @@ function getImgData() {
 
 function setup() {
   createCanvas(600, 600);
-  background("#473198");
   blurred = 0
 
 
@@ -34,7 +37,8 @@ function setup() {
 
 function draw() {
 
-
+  
+  background(`${chooseColor.value}`);
 
     if(img) {
     if(blurred == 0) {
@@ -43,7 +47,7 @@ function draw() {
     }
     
     img.resize(200,200)
-  background("#473198");
+  
   //image(img, 0, 0, 400, 400);
   
   let w = width/img.width;
