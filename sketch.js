@@ -4,8 +4,13 @@ var chooseFile;
 var chooseColor;
 var chooseDist;
 var chooseHeight;
+var vanishBtn;
+
 var blurred;
+var blurRadius;
 var clr;
+
+var isVanishing;
 
 var startingStroke;
 
@@ -25,9 +30,18 @@ function preload() {
     chooseDist = document.getElementById("choose-dist");
     chooseHeight = document.getElementById("choose-height");
 
+    vanishBtn = document.getElementById("btn-vanish");
+    vanishBtn.addEventListener("click", function() {
+      console.log("clicked");
+      isVanishing = true;
+      blurRadius = 1;
+    })
+
 }
 
 function getImgData() {
+  isVanishing = false;
+  blurRadius = 3;
     const files = chooseFile.files[0];
     if (files) {
       const fileReader = new FileReader();
@@ -38,11 +52,14 @@ function getImgData() {
     }
   }
 
-function setup() {
-  createCanvas(600, 600);
-  blurred = 0
 
+function setup() {
+  createCanvas(600,600);
+  blurred = 0
+  blurRadius = 3
 }
+
+
 
 function draw() {
 
@@ -50,8 +67,8 @@ function draw() {
   background(`${chooseColor.value}`);
 
     if(img) {
-    if(blurred == 0) {
-        img.filter(BLUR, 3);
+    if(blurred == 0 || isVanishing) {
+        img.filter(BLUR, blurRadius);
         blurred = 1
     }
     
