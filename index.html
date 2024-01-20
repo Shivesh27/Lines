@@ -10,16 +10,35 @@
 </head>
 <body>
     <div class="container">
-        <main></main>
-        <div class="controls">
-            <div class="color-picker">
-                <label for="choose-color">Choose color : </label>
-                <input type="color" id="choose-color" name="choose-color" value="#473198"/>
+        <div class="frame">
+            <main></main>
+            <div class="title">
+                <p> LINES </p>
             </div>
-            
-            <input type="file" id="choose-file" name="choose-file" accept="image/*" />
+            <div class="controls">
+                <div class="color-picker">
+                    <label for="choose-color">Choose color : </label>
+                    <input type="color" id="choose-color" name="choose-color" value="#473198"/>
+                </div>
+                <input type="file" id="choose-file" name="choose-file" accept="image/*" />
+                <div class="range_input">
+                    <label for="choose-dist"> Distance : </label>
+                    <input type="range" id="choose-dist" name="choose-dist" value="5" min = "1" max = "20" step="1" oninput="this.nextElementSibling.value  = this.value"/>
+                    <output>5</output>
+                </div>
+                <div class="range_input">
+                    <label for="choose-height"> Height : </label>
+                    <input type="range" id="choose-height" name="choose-height" value="5" max = "20" step="1" oninput="this.nextElementSibling.value  = this.value"/>
+                    <output>5</output>
+                </div>
+                
+            </div>
         </div>
         
+        
+    </div>
+    <div class="footer">
+        <p>Made by <b>Shivesh</b></p>
     </div>
    
     

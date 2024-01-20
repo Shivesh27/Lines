@@ -2,8 +2,12 @@
 var img;
 var chooseFile;
 var chooseColor;
+var chooseDist;
+var chooseHeight;
 var blurred;
 var clr;
+
+var startingStroke;
 
 
 function preload() {
@@ -14,6 +18,12 @@ function preload() {
       });
 
     chooseColor = document.getElementById("choose-color");
+    chooseColor.addEventListener("change", function() {
+      document.querySelector("body").style.backgroundColor = chooseColor.value
+    })
+
+    chooseDist = document.getElementById("choose-dist");
+    chooseHeight = document.getElementById("choose-height");
 
 }
 
@@ -31,7 +41,6 @@ function getImgData() {
 function setup() {
   createCanvas(600, 600);
   blurred = 0
-
 
 }
 
@@ -70,15 +79,15 @@ function draw() {
     }
   }
   
-  var startingStroke = 5
+  startingStroke = 5
   
   var str = startingStroke
   
   var band = 35
   
-  var waveDist = 5
+  var waveDist = int(chooseDist.value);
   
-  var waveHeight = 9
+  var waveHeight = int(chooseHeight.value);
   
   for(let i = 0 + band; i < img.height - band; i += waveDist) {
     noFill();
